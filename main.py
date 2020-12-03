@@ -20,7 +20,7 @@ sent = []
 for i in l:
     sent.append(i)
 
-for i in range(1, 100000):
+while True:
     for i in range(len(l)):
         with serial.Serial() as ser:
             # ser.baudrate = 4800
