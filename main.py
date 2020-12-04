@@ -1,7 +1,7 @@
 import serial
 from time import sleep
 
-DTM = 'GNDTM,,,,,,,,' #
+DTM = '$GNDTM,,,,,,,,' #
 ZDA = '$GPZDA,160012.71,11,03,2004,-1,00*7D'
 # DTM = '$GNDTM,P90,,,,,,,W84*56'  # WGS84
 RMC = '$GPRMC,225446,A,4916.45,N,12311.12,W,,054.7,191194,3,E*5F' # VALID
@@ -24,9 +24,9 @@ for i in l:
 while True:
     for i in range(len(l)):
         with serial.Serial() as ser:
-            # ser.baudrate = 4800
-            ser.port = '/dev/ttyMXUSB8'
+            # ser.baudrate = 9600
+            ser.port = '/dev/ttyMXUSB0'
             ser.open()
             ser.write(l[i].encode('utf-8'))
-            sleep(1)
+            # sleep(1)
             print(l[i])
