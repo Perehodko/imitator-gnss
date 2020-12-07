@@ -35,4 +35,4 @@ def chksum_nmea(sentence):
         print("cksum incorrect")
 
 
-chksum_nmea('$GPHDG,65.0,1,,0.5,T*23')
+chksum_nmea('$GPHDG,65.0,,,0.1,T*15')
