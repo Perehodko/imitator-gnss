@@ -1,6 +1,5 @@
 import serial
 
-
 HDT = '$GPHDT,65.000,T*32'
 HDG = '$GPHDG,65.0,,,0.1,T*15'
 THS = '$GPTHS,338.01,A*1C'
