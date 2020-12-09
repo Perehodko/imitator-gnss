@@ -24,10 +24,14 @@ for i in list_gnss:
     sent.append(i)
 
 while True:
-    for i in range(len(list_gnss)):
-        with serial.Serial() as ser:
-            # ser.baudrate = 9600
-            ser.port = '/dev/ttyMXUSB2'
-            ser.open()
-            ser.write(list_gnss[i].encode('utf-8'))
-            print(list_gnss[i])
+    try:
+        for i in range(len(list_gnss)):
+            with serial.Serial() as ser:
+                # ser.baudrate = 9600
+                ser.port = '/dev/ttyMXUSB2'
+                ser.open()
+                ser.write(list_gnss[i].encode('utf-8'))
+                print(list_gnss[i])
+    except Exception as e:
+        print("Такого устройства нет", e)
+        break
