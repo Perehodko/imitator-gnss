@@ -1,5 +1,6 @@
 import serial
 
+# positive
 HDT = '$GPHDT,65.000,T*32'
 HDG = '$GPHDG,65.0,,,0.1,T*16'
 THS = '$GPTHS,338.01,A*1C'
@@ -25,16 +26,20 @@ GSA_TRASH = '$GNGSA,F,3,80,71,73,79,69,,,,,,,,1.83,4.0,1.47*2C'
 TRASH = '��ܔE#���n�Dhh��#���k���n�-f�-k��n��#����DnDJKk��n�Kk�-�#�����-�#���Jk��Jk�n�N�#���Jk�n�D�)��#��'
 HDG_E = '$GPHDG,,,,,'
 
-l = [HDT, HDG, THS]
+list_s = [HDT, HDG, THS]
 sent = []
 
-for i in l:
+for i in list_s:
     sent.append(i)
 
 while True:
-    for i in range(len(l)):
-        with serial.Serial() as ser:
-            ser.port = '/dev/ttyMXUSB4'
-            ser.open()
-            ser.write(l[i].encode('utf-8'))
-            print(l[i])
+    try:
+        for i in range(len(list_s)):
+            with serial.Serial() as ser:
+                ser.port = '/dev/ttyMXUSB4'
+                ser.open()
+                ser.write(list_s[i].encode('utf-8'))
+                print(list_s[i])
+    except Exception as e:
+        print("Такого устройства нет", e)
+        break
