@@ -15,6 +15,7 @@ HDG_WITHOUT_MV = '$GPHDG,65.0,1,,,T*08'
 
 # Нет данных о магнитном склонении
 HDG_MAGN_EMPTY = '$GPHDG,65.0,,,,T*15'
+
 # Режим cчисления курса
 THS_E = '$GPTHS,338.01,E*0A'
 # Режим симуляции курса
@@ -36,5 +37,4 @@ while True:
             ser.port = '/dev/ttyMXUSB4'
             ser.open()
             ser.write(l[i].encode('utf-8'))
-            # sleep(1)
             print(l[i])

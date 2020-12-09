@@ -1,10 +1,11 @@
 import serial
 
+# positive
 HDT = '$GPHDT,65.000,T*32'
 HDG = '$GPHDG,65.0,,,0.1,T*15'
 THS = '$GPTHS,338.01,A*1C'
 
-# для проверки расчета Истинного курса тлько по HDG
+# для проверки расчета Истинного курса только по HDG
 # приоритет: HDG
 # на нав виджете KK --> 66,5
 HDG_KK = '$GPHDG,65.0,1,,0.5,T*23'
@@ -24,17 +25,20 @@ GSA_TRASH = '$GNGSA,F,3,80,71,73,79,69,,,,,,,,1.83,4.0,1.47*2C'
 TRASH = '��ܔE#���n�Dhh��#���k���n�-f�-k��n��#����DnDJKk��n�Kk�-�#�����-�#���Jk��Jk�n�N�#���Jk�n�D�)��#��'
 HDG_E = '$GPHDG,,,,,'
 
-l = [HDT, HDG_KK, THS]
+list_s = [HDT, HDG_KK, THS]
 sent = []
 
-for i in l:
+for i in list_s:
     sent.append(i)
 
 while True:
-    for i in range(len(l)):
-        with serial.Serial() as ser:
-            ser.port = '/dev/ttyMXUSB6'
-            ser.open()
-            ser.write(l[i].encode('utf-8'))
-            # sleep(1)
-            print(l[i])
+    try:
+        for i in range(len(list_s)):
+            with serial.Serial() as ser:
+                ser.port = '/dev/ttyMXUSB6'
+                ser.open()
+                ser.write(list_s[i].encode('utf-8'))
+                print(list_s[i])
+    except Exception as e:
+        print("Такого устройства нет", e)
+        break
