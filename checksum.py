@@ -36,3 +36,4 @@ def chksum_nmea(sentence):
 
 
 chksum_nmea('$GPHDG,65.0,,,0.1,T*15')
+### git commit
